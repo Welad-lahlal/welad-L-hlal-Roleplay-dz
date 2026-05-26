@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELAD L'HLAL | Store</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            background-color: #050d0a;
+        }
+        html[lang="ar"] body {
+            font-family: 'AR Baghdad', 'Cairo', sans-serif;
+        }
+        a { text-decoration: none; }
+        a:hover { text-decoration: none; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 3px; }
+        .glow-green { text-shadow: 0 0 15px rgba(16,185,129,0.6); }
+        .glow-white { text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+        .glass-panel {
+            background: rgba(5,15,10,0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-panel-premium {
+            background: rgba(5,15,10,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16,185,129,0.4); }
+            50% { box-shadow: 0 0 30px rgba(16,185,129,0.8); }
+        }
+        .animate-pulse-glow { animation: pulseGlow 3s infinite; }
+        @keyframes cartMove {
+            0%, 100% { transform: translateX(8px); }
+            50% { transform: translateX(-8px); }
+        }
+        .animate-cart { animation: cartMove 1s ease-in-out infinite; }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-word;
+        }
+        .sidebar-item .sidebar-arrow {
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+        /* Active sidebar item */
+        .sidebar-item.active {
+            background: rgba(255,255,255,0.05);
+        }
+        .sidebar-item:hover .sidebar-arrow,
+        .sidebar-item.active .sidebar-arrow {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden flex flex-col justify-between select-none relative">
+
+    <!-- Background Video -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105 transform transition-transform duration-1000 ease-out">
+            <source src="./images/video 4.webm" type="video/webm">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030705]/30 via-[#050f0a]/25 to-[#020604]/40"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.02)_0%,rgba(0,0,0,0.25)_80%)]"></div>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="w-full z-40 relative px-4 sm:px-8 py-4">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-4 transition-all duration-300">
+
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0" id="serverNameContainer">
+                <a id="brandLink" href="index.html" class="flex items-center gap-2 group cursor-pointer">
+                    <img src="./images/image 1.png" alt="Server Logo" class="h-8 sm:h-10 rounded-lg" />
+                    <div class="w-2 h-6 bg-emerald-500 rounded-full shadow-[0_0_12px_#10b981] group-hover:scale-110 transition-transform"></div>
+                    <div class="flex flex-col leading-none">
+                        <h1 class="text-xl sm:text-2xl font-black tracking-wider">
+                            <span id="brandTitle" class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-white to-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.35)]">WELAD L'HLAL</span>
+                        </h1>
+                        <div class="text-emerald-400 font-bold text-[9px] sm:text-[10px] tracking-[0.45em] uppercase mt-1">Studio</div>
+                    </div>
+                </a>
+            </div>
+
+            <div id="navContainer" class="flex-1 flex justify-center min-w-0">
+                <nav class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <a href="index.html"
+                       class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="mainMenu">Home</span>
+                    </a>
+                    <a href="roster.html"
+                       class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="roster">Roster</span>
+                    </a>
+                    <a href="team.html"
+                       class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="team">Team</span>
+                    </a>
+                    <a href="live.html"
+                       class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="live">Live</span>
+                    </a>
+                    <a href="faq.html"
+                       class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="faq">FAQ</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Language Switcher Dropdown -->
+            <div id="headerRight" class="flex items-center gap-3 relative shrink-0">
+                <a href="store.html"
+                   class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-black font-bold rounded-xl transition-all duration-200 cursor-pointer text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping animate-bounce motion-reduce:animate-none"></i>
+                    <span data-translate="store">Store</span>
+                </a>
+                <!-- Sign Up / Profile -->
+                <div id="authArea">
+                    <button id="signUpBtn" onclick="window.location.href='signup.html'"
+                            class="w-10 h-10 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center transition-colors cursor-pointer">
+                        <i class="fa-solid fa-user text-emerald-400"></i>
+                    </button>
+                    <div id="profileArea" class="hidden relative">
+                        <button onclick="toggleProfileDropdown()" class="w-10 h-10 rounded-lg bg-transparent hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer text-lg opacity-50 hover:opacity-100">
+                            👤
+                        </button>
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-xl border border-white/10 py-2 z-50">
+                            <div class="px-4 py-3 flex items-center gap-3 border-b border-white/10">
+                                <img id="dropdownAvatar" src="" alt="avatar" class="w-10 h-10 rounded-full object-cover" />
+                                <div class="min-w-0">
+                                    <p class="text-white font-bold text-sm truncate" id="dropdownName"></p>
+                                    <p class="text-gray-400 text-xs truncate" id="dropdownUsername"></p>
+                                </div>
+                            </div>
+                            <button onclick="logout()" class="w-full flex items-center gap-2 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span data-translate="logout">Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="langSwitcherContainer" class="relative">
+                    <button onclick="toggleLanguageDropdown()" id="langDropdownBtn" class="w-10 h-10 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center transition-colors focus:outline-none">
+                        <img id="currentFlag" src="./images/image90.jpg" alt="Flag" class="w-6 h-6 object-cover rounded-full" />
+                    </button>
+                    <div id="langDropdown" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg py-2 z-50">
+                        <p class="text-white text-sm px-4 py-2 border-b border-gray-700">اختر اللغة</p>
+                        <a href="#" onclick="setLanguage('ar'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image90.jpg" alt="Algeria" class="w-6 h-6 object-cover rounded-full" /> العربية
+                        </a>
+                        <a href="#" onclick="setLanguage('en'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image91.png" alt="USA" class="w-6 h-6 object-cover rounded-full" /> English
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content View -->
+    <main class="w-full max-w-5xl mx-auto px-4 z-30 flex-grow flex flex-col justify-center my-6">
+        <div class="glass-panel-premium rounded-3xl overflow-hidden shadow-2xl">
+
+            <!-- Store Header -->
+            <div class="flex flex-wrap items-center justify-between gap-4 px-6 py-5 bg-black/40">
+                <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 shrink-0 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-store text-lg"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2" data-translate="storeTitle">
+                            <span class="text-emerald-500">WELAD</span> L'HLAL Store
+                        </h3>
+                        <p class="text-xs text-gray-400" data-translate="storeSubtitle">Support the server and get exclusive in-game features</p>
+                    </div>
+                </div>
+                <a href="#" onclick="openCartModal(); return false;" class="relative shrink-0 px-5 py-2.5 bg-emerald-500/10 hover:bg-emerald-500 text-white hover:text-black font-bold rounded-xl transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/5 group cursor-pointer text-sm sm:text-base">
+                    <i class="fa-solid fa-cart-shopping text-emerald-400 group-hover:text-black transition-colors"></i>
+                    <span data-translate="shoppingCart">Shopping Cart</span>
+                    <i class="fa-solid fa-chevron-right text-emerald-400 text-xs"></i>
+                    <span id="cartBadge" class="hidden absolute -top-1.5 -right-1.5 min-w-[1.25rem] h-5 px-1 bg-emerald-500 text-black text-xs font-black rounded-full flex items-center justify-center">0</span>
+                </a>
+            </div>
+
+            <!-- Body Container -->
+            <div class="flex">
+
+                <!-- Left Sidebar -->
+                <div class="w-64 bg-black/40 p-4 space-y-2">
+
+                    <!-- Vehicles -->
+                    <div onclick="switchStoreSection('vehicles')" class="sidebar-item active flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-white/5 transition-colors group" data-key="vehicles">
+                        <i class="fa-solid fa-car text-emerald-400 text-lg"></i>
+                        <span class="text-emerald-400 font-bold" data-translate="vehicles">Vehicles</span>
+                        <i class="sidebar-arrow fa-solid fa-chevron-down text-emerald-400 text-sm"></i>
+                    </div>
+
+                    <!-- Houses -->
+                    <div onclick="switchStoreSection('houses')" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-white/5 transition-colors group" data-key="houses">
+                        <i class="fa-solid fa-house text-blue-400 text-lg"></i>
+                        <span class="text-blue-400 font-bold" data-translate="houses">Houses</span>
+                        <i class="sidebar-arrow fa-solid fa-chevron-down text-blue-400 text-sm"></i>
+                    </div>
+
+                    <!-- Mapping -->
+                    <div onclick="switchStoreSection('mapping')" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-white/5 transition-colors group" data-key="mapping">
+                        <i class="fa-solid fa-map text-orange-400 text-lg"></i>
+                        <span class="text-orange-400 font-bold" data-translate="mapping">Mapping</span>
+                        <i class="sidebar-arrow fa-solid fa-chevron-down text-orange-400 text-sm"></i>
+                    </div>
+
+                    <!-- Accessoires -->
+                    <div onclick="switchStoreSection('accessoires')" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-white/5 transition-colors group" data-key="accessoires">
+                        <i class="fa-solid fa-gem text-purple-400 text-lg"></i>
+                        <span class="text-purple-400 font-bold" data-translate="accessoires">Accessoires</span>
+                        <i class="sidebar-arrow fa-solid fa-chevron-down text-purple-400 text-sm"></i>
+                    </div>
+
+                    <!-- Order Dropdown -->
+                    <div class="relative">
+                        <div onclick="toggleOrderDropdown()" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer hover:bg-white/5 transition-colors group" data-key="order">
+                            <i class="fa-solid fa-list text-pink-400 text-lg"></i>
+                            <span class="text-pink-400 font-bold" data-translate="order">Order</span>
+                            <i id="orderDropdownArrow" class="sidebar-arrow fa-solid fa-chevron-down text-pink-400 text-sm transition-transform duration-300"></i>
+                        </div>
+                        <div id="orderDropdown" class="hidden mt-1 ml-4 space-y-1">
+                            <div onclick="switchStoreSection('create2Caractere')" class="sidebar-item flex items-center gap-3 px-4 py-2 rounded-lg cursor-pointer hover:bg-white/5 transition-colors group" data-key="create2Caractere">
+                                <i class="fa-solid fa-user-plus text-pink-300 text-sm"></i>
+                                <span class="text-pink-300 font-medium text-sm" data-translate="create2Caractere">Create 2 Caractere</span>
+                            </div>
+                            <div onclick="switchStoreSection('createJob')" class="sidebar-item flex items-center gap-3 px-4 py-2 rounded-lg cursor-pointer hover:bg-white/5 transition-colors group" data-key="createJob">
+                                <i class="fa-solid fa-briefcase text-pink-300 text-sm"></i>
+                                <span class="text-pink-300 font-medium text-sm" data-translate="createJob">Create Job</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="flex-1 p-6 space-y-6">
+
+                    <!-- Vehicles Section -->
+                    <div id="section-vehicles" class="store-section">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="vehiclesGrid"></div>
+                    </div>
+
+                    <!-- Houses Section -->
+                    <div id="section-houses" class="store-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="housesGrid"></div>
+                    </div>
+
+                    <!-- Mapping Section -->
+                    <div id="section-mapping" class="store-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="mappingGrid"></div>
+                    </div>
+
+                    <!-- Accessoires Section -->
+                    <div id="section-accessoires" class="store-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="accessoiresGrid"></div>
+                    </div>
+
+                    <!-- Create 2 Caractere Section -->
+                    <div id="section-create2Caractere" class="store-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="create2CaractereGrid"></div>
+                    </div>
+
+                    <!-- Create Job Section -->
+                    <div id="section-createJob" class="store-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="createJobGrid"></div>
+                    </div>
+
+                    <!-- Store Info Banner -->
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/10 text-center text-xs text-gray-300 flex flex-col sm:flex-row items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-info text-emerald-400"></i>
+                        <span data-translate="storeInfo">All revenue goes directly to developing and improving server performance and adding new scripts.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Overlay + Sidebar -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] hidden" aria-hidden="true"></div>
+    <div id="cartSidebar" class="fixed right-0 top-0 h-svh w-80 max-w-[min(20rem,92vw)] bg-black/95 border-l border-white/10 p-4 hidden z-[60] flex flex-col shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="cartSidebarTitle">
+        <div class="flex items-center justify-between shrink-0 pb-4 border-b border-white/10">
+            <h4 id="cartSidebarTitle" class="text-white font-bold text-lg" data-translate="shoppingCart">سلة التسوّق</h4>
+            <button type="button" id="cartCloseBtn" class="w-11 h-11 rounded-xl bg-white/10 hover:bg-red-500 text-gray-300 hover:text-white flex items-center justify-center cursor-pointer transition-colors" aria-label="إغلاق السلة">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div id="cartItems" class="flex-1 min-h-0 overflow-y-auto py-4 space-y-2"></div>
+        <div class="shrink-0 border-t border-white/10 pt-4">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-400" data-translate="total">المجموع:</span>
+                <span id="cartTotal" class="text-emerald-400 font-bold text-xl">$0</span>
+            </div>
+            <button type="button" onclick="checkout()" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <span data-translate="checkout">إتمام الشراء</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full z-30 py-4 text-center text-xs text-white/30 backdrop-blur-xs">
+        <p>© 2026 WELAD L'HLAL Roleplay Server. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Image Gallery Modal -->
+    <div id="galleryModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeGallery()"></div>
+        <div class="relative z-10 w-full h-full flex flex-col items-center justify-center p-4">
+            <button onclick="closeGallery()" class="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-red-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors text-2xl z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-full max-w-[95vw]">
+                <h3 id="galleryTitle" class="text-2xl font-bold text-white text-center mb-6"></h3>
+                <div id="galleryImages" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[85vh] overflow-y-auto p-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Items Modal -->
+    <div id="allItemsModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeAllItemsModal()"></div>
+        <div class="relative z-10 w-full h-full flex flex-col items-center justify-center p-4">
+            <button onclick="closeAllItemsModal()" class="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-red-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors text-2xl z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-full max-w-4xl">
+                <h3 class="text-2xl font-bold text-white text-center mb-6" data-translate="allItems">جميع العناصر</h3>
+                <div id="allItemsContent" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto p-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" onclick="closeConfirmModal()"></div>
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+            <div class="bg-black/95 border border-white/10 rounded-2xl p-6 w-full max-w-md space-y-4">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-white font-bold text-xl" data-translate="confirmOperation">تأكيد العملية</h4>
+                    <button onclick="closeConfirmModal()" class="text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                <p id="confirmMessage" class="text-gray-300"></p>
+                <div class="flex gap-3 hidden">
+                    <button onclick="closeConfirmModal()" class="flex-1 py-2.5 bg-white/10 hover:bg-white text-white hover:text-black font-bold rounded-xl transition-all cursor-pointer" data-translate="cancel">إلغاء</button>
+                    <button onclick="confirmAction()" class="flex-1 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition-all cursor-pointer" data-translate="confirm">تأكيد</button>
+                </div>
+                <div id="confirmOkButton" class="flex gap-3 hidden">
+                    <button onclick="closeConfirmModal()" class="flex-1 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition-all cursor-pointer" data-translate="ok">موافق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="closeLightbox()"></div>
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-red-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors text-2xl z-20">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+                <button onclick="zoomImage(-0.2)" class="w-12 h-12 bg-white/10 hover:bg-emerald-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors text-xl">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <button onclick="resetZoom()" class="w-12 h-12 bg-white/10 hover:bg-white text-white hover:text-black rounded-full flex items-center justify-center cursor-pointer transition-colors text-xl">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+                <button onclick="zoomImage(0.2)" class="w-12 h-12 bg-white/10 hover:bg-emerald-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-colors text-xl">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <div id="lightboxContainer" class="w-full h-full overflow-hidden flex items-center justify-center p-8">
+                <div id="lightboxWrapper" class="relative p-2 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-emerald-500/40 rounded-lg overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400 to-transparent animate-gradient-x"></div>
+                    </div>
+                    <img id="lightboxImage" src="" alt="Zoomed Image" class="max-w-[95vw] max-h-[90vh] object-contain cursor-move relative z-10"
+                         onmousedown="startDrag(event)" onmousemove="drag(event)" onmouseup="endDrag()" onmouseleave="endDrag()" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // ─── Discord Session ──────────────────────────────────────────────────
+        function loadSession() {
+            const session = JSON.parse(localStorage.getItem('discord_session'));
+            if (session && session.username) {
+                document.getElementById('signUpBtn').classList.add('hidden');
+                document.getElementById('profileArea').classList.remove('hidden');
+                document.getElementById('dropdownAvatar').src = session.avatar;
+                document.getElementById('dropdownName').textContent = session.global_name || session.username;
+                document.getElementById('dropdownUsername').textContent = '@' + session.username;
+            } else {
+                document.getElementById('signUpBtn').classList.remove('hidden');
+                document.getElementById('profileArea').classList.add('hidden');
+            }
+        }
+
+        function toggleProfileDropdown() {
+            document.getElementById('profileDropdown').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(e) {
+            const area = document.getElementById('profileArea');
+            if (area && !area.contains(e.target)) {
+                document.getElementById('profileDropdown').classList.add('hidden');
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('discord_session');
+            loadSession();
+            document.getElementById('profileDropdown').classList.add('hidden');
+        }
+
+        loadSession();
+
+        // ─── MongoDB API Connection ────────────────────────────────────────────
+        const API_BASE_URL = window.location.origin;
+
+        // Helper: load products from GitHub API
+        async function loadProductsFromDB(table) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/products/${table}`);
+                const result = await response.json();
+                if (result.success && result.data) {
+                    console.log(`✅ Loaded ${result.data.length} from GitHub ${table}`);
+                    return result.data;
+                }
+                throw new Error('API load failed');
+            } catch (err) {
+                console.error(`❌ GitHub API load error (${table}):`, err);
+                // Fallback: localStorage
+                const storageKeyMap = { vehicles: 'storeVehicles', houses: 'storeHouses', mapping: 'storeMappings', accessoires: 'storeAccessoires', characters: 'storeCharacters', jobs: 'storeJobs' };
+                return JSON.parse(localStorage.getItem(storageKeyMap[table] || 'storeProducts')) || [];
+            }
+        }
+
+        // ─── Translations ────────────────────────────────────────────────────────────
+        const translations = {
+            en: {
+                mainMenu: 'Home',
+                store: 'Store',
+                admin: 'Admin',
+                roster: 'Roster',
+                team: 'Team',
+                live: 'Live',
+                faq: 'FAQ',
+                signUp: 'Sign Up',
+                storeTitle: "WELAD L'HLAL Store",
+                storeSubtitle: 'Support the server and get exclusive in-game features',
+                noProducts: 'No products currently',
+                viewAllImages: 'View All Images',
+                buyProduct: 'Buy Product',
+                storeInfo: 'All revenue goes directly to developing and improving server performance and adding new scripts.',
+                products: 'Products',
+                vehicles: 'Vehicles',
+                houses: 'Houses',
+                mapping: 'Mapping',
+                accessoires: 'Accessoires',
+                noVehicles: 'No vehicles currently',
+                noHouses: 'No houses currently',
+                noMappings: 'No mappings currently',
+                noAccessoires: 'No accessoires currently',
+                shoppingCart: 'Shopping Cart',
+                total: 'Total:',
+                checkout: 'Checkout',
+                addToCart: 'Add to Cart',
+                soldAnnouncement: 'SOLD',
+                notAvailable: 'Not Available',
+                order: 'Order',
+                create2Caractere: 'Create 2 Caractere',
+                createJob: 'Create Job',
+                noJobs: 'No jobs currently',
+                noCharacters: 'No characters currently',
+                cartEmpty: 'Cart is empty',
+                itemAlreadyInCart: 'This item is already in the cart!',
+                orderSubmitted: 'Your order has been submitted successfully!',
+                orderSavedLocally: 'Saved and will be reviewed by administration',
+                sending: 'Sending...',
+                cartIsEmpty: 'Cart is empty!',
+                ticketAccepted: 'Ticket accepted successfully!',
+                ticketSentDiscord: 'Ticket sent on Discord and order confirmed.',
+                ticketSavedLocal: 'Saved locally as completed order',
+                noTicketsYet: 'No tickets yet',
+                visitor: 'Visitor',
+                allItems: 'All Items',
+                confirmOperation: 'Confirm Operation',
+                cancel: 'Cancel',
+                confirm: 'Confirm',
+                ok: 'OK',
+                myTickets: 'My Tickets',
+                orderId: 'Order ID:',
+                teamWillContact: 'The team will contact you soon.',
+                adminOnly: 'This operation is available for admins only.',
+                confirmAccept: 'Do you want to confirm accepting this order?'
+            },
+            ar: {
+                mainMenu: 'الرئيسية',
+                store: 'المتجر',
+                admin: 'الإدارة',
+                roster: 'صُنّاع المحتوى',
+                team: 'الفريق',
+                live: 'مباشر',
+                faq: 'الأسئلة الشائعة',
+                signUp: 'التسجيل',
+                storeTitle: "متجر WELAD L'HLAL",
+                storeSubtitle: 'ادعم الخادم واحصل على ميزات حصرية داخل اللعبة',
+                noProducts: 'لا توجد منتجاتٌ حالياً',
+                viewAllImages: 'عرض جميع الصور',
+                buyProduct: 'شراء المنتج',
+                storeInfo: 'جميع الإيرادات تذهب مباشرةً لتطوير وتحسين أداء الخادم وإضافة سكريبتات جديدة.',
+                products: 'المنتجات',
+                vehicles: 'المركبات',
+                houses: 'المنازل',
+                mapping: 'التصميم المكاني',
+                accessoires: 'الإكسسوارات',
+                noVehicles: 'لا توجد مركباتٌ حالياً',
+                noHouses: 'لا توجد منازلُ حالياً',
+                noMappings: 'لا يوجد تصميمٌ مكاني حالياً',
+                noAccessoires: 'لا توجد إكسسواراتٌ حالياً',
+                shoppingCart: 'سلة التسوّق',
+                total: 'المجموع:',
+                checkout: 'إتمام الشراء',
+                addToCart: 'أضف إلى السلة',
+                soldAnnouncement: 'تم البيع',
+                notAvailable: 'غير متاح',
+                order: 'طلبات أخرى',
+                create2Caractere: 'إنشاء شخصيتين',
+                createJob: 'إنشاء وظيفة',
+                noJobs: 'لا توجد وظائفُ حالياً',
+                noCharacters: 'لا توجد شخصياتٌ حالياً',
+                cartEmpty: 'السلة فارغة',
+                itemAlreadyInCart: 'هذا العنصر موجودٌ بالفعل في السلة!',
+                orderSubmitted: 'تم تقديم طلبك بنجاح!',
+                orderSavedLocally: 'تم الحفظ وسيتم مراجعته من الإدارة',
+                sending: 'جارٍ الإرسال...',
+                cartIsEmpty: 'السلة فارغة!',
+                ticketAccepted: 'تم قبول التذكرة بنجاح!',
+                ticketSentDiscord: 'تم إرسال التذكرة في ديسكورد وتأكيد الطلب.',
+                ticketSavedLocal: 'تم الحفظ محلياً كطلبٍ مكتمل',
+                noTicketsYet: 'لا توجد تذاكر بعد',
+                visitor: 'زائر',
+                allItems: 'جميع العناصر',
+                confirmOperation: 'تأكيد العملية',
+                cancel: 'إلغاء',
+                confirm: 'تأكيد',
+                ok: 'موافق',
+                myTickets: 'تذاكري',
+                orderId: 'معرّف الطلب:',
+                teamWillContact: 'سيتواصل معك الفريق قريباً.',
+                adminOnly: 'هذه العملية متاحة فقط للإدارة.',
+                confirmAccept: 'هل تريد تأكيد قبول هذا الطلب؟'
+            }
+        };
+
+        // ─── Helper Functions ─────────────────────────────────────────────────────────
+        function escapeHtml(str) {
+            return String(str ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function formatDescription(text) {
+            return escapeHtml(text ?? '');
+        }
+
+        // ─── State Variables ──────────────────────────────────────────────────────────
+        let currentLanguage = 'ar';
+        let cart = [];
+        let currentZoom = 1;
+        let isDragging = false;
+        let dragStartX, dragStartY;
+        let translateX = 0, translateY = 0;
+        const carouselIndices  = {};
+        const productImages    = {};
+        const vehicleImages    = {};
+        const houseImages      = {};
+        const mappingImages    = {};
+        const accessoiresImages = {};
+        const characterImages  = {};
+        const jobImages        = {};
+
+        // ─── Card Builder Helper ──────────────────────────────────────────────────────
+        /**
+         * Builds the innerHTML string for a store card.
+         * @param {object} opts
+         */
+        function buildStoreCard({
+            imgId, images, accentColor, hoverBorderColor, topLineColor,
+            title, description, price, sold, soldLabel, notAvailableLabel,
+            addToCartFn, type, index
+        }) {
+            const t = translations[currentLanguage];
+            const hasMultiple = images && images.length > 1;
+            const firstImg = images && images.length > 0 ? images[0] : null;
+
+            // Image area
+            let imageArea = '';
+            if (firstImg) {
+                imageArea = `
+                    <div class="relative w-full overflow-hidden" style="aspect-ratio:16/9;" data-current-img-index="0">
+                        <img id="${imgId}" src="${firstImg}" alt="${escapeHtml(title)}" class="w-full h-full object-cover" />
+                        ${hasMultiple ? `
+                            <button onclick="prevStoreImg('${imgId}','${imgId}-counter',${JSON.stringify(images)})"
+                                class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-${accentColor}-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-all opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="nextStoreImg('${imgId}','${imgId}-counter',${JSON.stringify(images)})"
+                                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/60 hover:bg-${accentColor}-500 text-white rounded-full flex items-center justify-center cursor-pointer transition-all opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                            <div id="${imgId}-counter" class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-all">1/${images.length}</div>
+                        ` : ''}
+                        ${sold ? `<div class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">${soldLabel}</div>` : ''}
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-${topLineColor}-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>`;
+            } else {
+                imageArea = `<div class="w-full bg-gray-800 flex items-center justify-center text-gray-500 text-sm" style="aspect-ratio:16/9;">No images</div>`;
+            }
+
+            // Description row (optional)
+            const descRow = (description !== undefined && description !== null)
+                ? `<p class="text-xs text-gray-400 leading-relaxed break-words line-clamp-2">${formatDescription(description)}</p>`
+                : '';
+
+            // View all images button
+            const viewAllBtn = hasMultiple
+                ? `<button onclick="openStoreGallery(${JSON.stringify(images)}, '${escapeHtml(title).replace(/'/g, "\\'")}')"
+                        class="w-full py-2 mb-2 bg-white/10 hover:bg-white text-white hover:text-black font-bold rounded-xl transition-all text-sm cursor-pointer border border-white/20 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-images"></i>
+                        <span>${t.viewAllImages} (${images.length})</span>
+                    </button>`
+                : '';
+
+            // Buy / sold button
+            let actionBtn = '';
+            if (sold) {
+                actionBtn = `<div class="w-full py-2.5 bg-red-500/10 text-red-500 font-bold rounded-xl text-sm text-center border border-red-500/40 cursor-not-allowed">${soldLabel}</div>`;
+            } else {
+                actionBtn = `<button onclick="${addToCartFn}"
+                    class="w-full py-2.5 bg-${accentColor}-500/20 hover:bg-${accentColor}-500 text-${accentColor}-300 hover:text-black font-bold rounded-xl transition-all text-sm cursor-pointer border border-${accentColor}-500/30">
+                    ${t.addToCart}
+                </button>`;
+            }
+
+            return `
+                ${imageArea}
+                <div class="p-5 flex flex-col gap-2 flex-1">
+                    <h4 class="text-xl font-extrabold text-${accentColor}-400">${escapeHtml(title)}</h4>
+                    ${descRow}
+                    <div class="mt-auto pt-2">
+                        <div class="text-2xl font-black text-white mb-3 text-left" dir="ltr">$${price}</div>
+                        ${viewAllBtn}
+                        ${actionBtn}
+                    </div>
+                </div>`;
+        }
+
+
+        // ─── Load Functions ───────────────────────────────────────────────────────────
+
+        async function loadVehicles() {
+            try {
+                const vehicles = await loadProductsFromDB('vehicles');
+                const grid = document.getElementById('vehiclesGrid');
+                const t = translations[currentLanguage];
+
+            if (vehicles.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noVehicles}</div>`;
+                return;
+            }
+            grid.innerHTML = '';
+
+            vehicles.forEach((vehicle, index) => {
+                const imgId = `storeVehicleImg-${index}`;
+                const images = vehicle.images || [];
+                const card = document.createElement('div');
+                card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-emerald-500/40 flex flex-col justify-between transition-all relative group';
+
+                const safeName = String(vehicle.name).replace(/'/g, "\\'");
+                card.innerHTML = buildStoreCard({
+                    imgId, images,
+                    accentColor: 'emerald', hoverBorderColor: 'emerald', topLineColor: 'emerald',
+                    title: vehicle.name,
+                    description: vehicle.description,
+                    price: vehicle.price,
+                    sold: false,
+                    soldLabel: '',
+                    notAvailableLabel: '',
+                    addToCartFn: `addToCart('${safeName}', ${vehicle.price}, 'vehicle')`,
+                    type: 'vehicle', index
+                });
+                grid.appendChild(card);
+            });
+            } catch (err) {
+                console.error('❌ Error loading vehicles:', err);
+            }
+        }
+
+        async function loadHouses() {
+            try {
+                const houses = await loadProductsFromDB('houses');
+                const grid = document.getElementById('housesGrid');
+                const t = translations[currentLanguage];
+
+                if (houses.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noHouses}</div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+
+                houses.forEach((house, index) => {
+                    const imgId = `storeHouseImg-${index}`;
+                    const images = house.images || [];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-blue-500/40 flex flex-col justify-between transition-all relative group';
+
+                    const safeName = String(house.name).replace(/'/g, "\\'");
+                    card.innerHTML = buildStoreCard({
+                        imgId, images,
+                        accentColor: 'blue', hoverBorderColor: 'blue', topLineColor: 'blue',
+                        title: house.name,
+                        description: house.description,
+                        price: house.price,
+                        sold: !!house.sold,
+                        soldLabel: t.soldAnnouncement,
+                    notAvailableLabel: '',
+                    addToCartFn: `addToCart('${safeName}', ${house.price}, 'house')`,
+                    type: 'house', index
+                });
+                grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Error loading houses:', err);
+            }
+        }
+
+        async function loadMappings() {
+            try {
+                const mappings = await loadProductsFromDB('mapping');
+                const grid = document.getElementById('mappingGrid');
+                const t = translations[currentLanguage];
+
+                if (mappings.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noMappings}</div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+
+                mappings.forEach((mapping, index) => {
+                    const imgId = `storeMappingImg-${index}`;
+                    const images = mapping.images || [];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-orange-500/40 flex flex-col justify-between transition-all relative group';
+
+                    const safeName = String(mapping.name).replace(/'/g, "\\'");
+                    card.innerHTML = buildStoreCard({
+                        imgId, images,
+                        accentColor: 'orange', hoverBorderColor: 'orange', topLineColor: 'orange',
+                        title: mapping.name,
+                        description: mapping.description,
+                        price: mapping.price,
+                        sold: !!mapping.sold,
+                        soldLabel: t.soldAnnouncement,
+                        notAvailableLabel: '',
+                        addToCartFn: `addToCart('${safeName}', ${mapping.price}, 'mapping')`,
+                        type: 'mapping', index
+                    });
+                grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Error loading mappings:', err);
+            }
+        }
+
+        async function loadAccessoires() {
+            try {
+                const accessoires = await loadProductsFromDB('accessoires');
+                const grid = document.getElementById('accessoiresGrid');
+                const t = translations[currentLanguage];
+
+                if (accessoires.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noAccessoires}</div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+
+                accessoires.forEach((item, index) => {
+                    const imgId = `storeAccImg-${index}`;
+                    const images = item.images || [];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-purple-500/40 flex flex-col justify-between transition-all relative group';
+
+                    const safeName = String(item.name).replace(/'/g, "\\'");
+                    card.innerHTML = buildStoreCard({
+                        imgId, images,
+                        accentColor: 'purple', hoverBorderColor: 'purple', topLineColor: 'purple',
+                        title: item.name,
+                        description: item.description,
+                        price: item.price,
+                        sold: !!item.sold,
+                        soldLabel: t.soldAnnouncement,
+                        notAvailableLabel: '',
+                        addToCartFn: `addToCart('${safeName}', ${item.price}, 'accessoires')`,
+                        type: 'accessoires', index
+                    });
+                grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Error loading accessoires:', err);
+            }
+        }
+
+        async function loadCharacters() {
+            try {
+                const characters = await loadProductsFromDB('characters');
+                const grid = document.getElementById('create2CaractereGrid');
+                if (!grid) return;
+                const t = translations[currentLanguage];
+
+                if (characters.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noCharacters}</div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+
+                characters.forEach((character, index) => {
+                    const imgId = `storeCharImg-${index}`;
+                    const images = character.images || [];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-pink-500/40 flex flex-col justify-between transition-all relative group';
+
+                    const safeName = String(character.username).replace(/'/g, "\\'");
+                    card.innerHTML = buildStoreCard({
+                        imgId, images,
+                        accentColor: 'pink', hoverBorderColor: 'pink', topLineColor: 'pink',
+                        title: character.username,
+                        description: null,          // no description field for characters
+                        price: character.price,
+                        sold: !!character.sold,
+                        soldLabel: t.notAvailable,
+                        notAvailableLabel: t.notAvailable,
+                        addToCartFn: `addToCart('${safeName}', ${character.price}, 'character')`,
+                        type: 'character', index
+                });
+                grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Error loading characters:', err);
+            }
+        }
+
+        async function loadJobs() {
+            try {
+                const jobs = await loadProductsFromDB('jobs');
+                const grid = document.getElementById('createJobGrid');
+                if (!grid) return;
+                const t = translations[currentLanguage];
+
+                if (jobs.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noJobs}</div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+
+                jobs.forEach((job, index) => {
+                    const imgId = `storeJobImg-${index}`;
+                    const images = job.images || [];
+                    const card = document.createElement('div');
+                    card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-pink-500/40 flex flex-col justify-between transition-all relative group';
+
+                    const safeName = String(job.username).replace(/'/g, "\\'");
+                    card.innerHTML = buildStoreCard({
+                        imgId, images,
+                        accentColor: 'pink', hoverBorderColor: 'pink', topLineColor: 'pink',
+                        title: job.username,
+                        description: job.description,   // jobs have description
+                        price: job.price,
+                        sold: !!job.sold,
+                        soldLabel: t.notAvailable,
+                        notAvailableLabel: t.notAvailable,
+                        addToCartFn: `addToCart('${safeName}', ${job.price}, 'job')`,
+                        type: 'job', index
+                });
+                grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('❌ Error loading jobs:', err);
+            }
+        }
+
+        // Load products from Supabase
+        async function loadProducts() {
+            const products = await loadProductsFromDB('products');
+            const productsGrid = document.getElementById('productsGrid');
+            if (!productsGrid) return;
+            const t = translations[currentLanguage];
+
+            if (products.length === 0) {
+                productsGrid.innerHTML = `<div class="col-span-full text-center text-gray-400">${t.noProducts}</div>`;
+                return;
+            }
+            productsGrid.innerHTML = '';
+
+            products.forEach((product, index) => {
+                const carouselId = product.name.replace(/\s/g, '-');
+                carouselIndices[carouselId] = 0;
+                if (product.images && product.images.length > 0) {
+                    productImages[carouselId] = { name: product.name, images: product.images };
+                }
+
+                const imgId = `storeProductImg-${index}`;
+                const images = product.images || [];
+                const card = document.createElement('div');
+                card.className = 'overflow-hidden rounded-2xl bg-black/40 border border-white/5 hover:border-emerald-500/40 flex flex-col justify-between transition-all relative group';
+
+                const safeName = String(product.name).replace(/'/g, "\\'");
+                card.innerHTML = buildStoreCard({
+                    imgId, images,
+                    accentColor: 'emerald', hoverBorderColor: 'emerald', topLineColor: 'emerald',
+                    title: product.name,
+                    description: product.description,
+                    price: product.price,
+                    sold: false,
+                    soldLabel: '',
+                    notAvailableLabel: '',
+                    addToCartFn: `addToCart('${safeName}', ${product.price}, 'product')`,
+                    type: 'product', index
+                });
+                productsGrid.appendChild(card);
+            });
+        }
+
+
+        // ─── Image Navigation Helpers ─────────────────────────────────────────────────
+
+        function prevStoreImg(imgId, counterId, images) {
+            const imgEl = document.getElementById(imgId);
+            if (!imgEl) return;
+            const card = imgEl.closest('[data-current-img-index]');
+            let idx = parseInt(card ? card.dataset.currentImgIndex : 0) || 0;
+            idx = (idx - 1 + images.length) % images.length;
+            if (card) card.dataset.currentImgIndex = idx;
+            imgEl.src = images[idx];
+            const counterEl = document.getElementById(counterId);
+            if (counterEl) counterEl.textContent = `${idx + 1}/${images.length}`;
+        }
+
+        function nextStoreImg(imgId, counterId, images) {
+            const imgEl = document.getElementById(imgId);
+            if (!imgEl) return;
+            const card = imgEl.closest('[data-current-img-index]');
+            let idx = parseInt(card ? card.dataset.currentImgIndex : 0) || 0;
+            idx = (idx + 1) % images.length;
+            if (card) card.dataset.currentImgIndex = idx;
+            imgEl.src = images[idx];
+            const counterEl = document.getElementById(counterId);
+            if (counterEl) counterEl.textContent = `${idx + 1}/${images.length}`;
+        }
+
+        // Backward-compat carousel navigation (used by loadProducts old carousel system)
+        function prevImage(carouselId) {
+            const carousel = document.getElementById(`carousel-${carouselId}`);
+            if (!carousel) return;
+            const images = carousel.querySelectorAll('img');
+            const dots = carousel.parentElement ? carousel.parentElement.querySelectorAll('.carousel-dot') : [];
+            const total = images.length;
+            if (!carouselIndices[carouselId]) carouselIndices[carouselId] = 0;
+            carouselIndices[carouselId] = (carouselIndices[carouselId] - 1 + total) % total;
+            updateCarousel(images, dots, carouselIndices[carouselId]);
+        }
+
+        function nextImage(carouselId) {
+            const carousel = document.getElementById(`carousel-${carouselId}`);
+            if (!carousel) return;
+            const images = carousel.querySelectorAll('img');
+            const dots = carousel.parentElement ? carousel.parentElement.querySelectorAll('.carousel-dot') : [];
+            const total = images.length;
+            if (!carouselIndices[carouselId]) carouselIndices[carouselId] = 0;
+            carouselIndices[carouselId] = (carouselIndices[carouselId] + 1) % total;
+            updateCarousel(images, dots, carouselIndices[carouselId]);
+        }
+
+        function updateCarousel(images, dots, currentIndex) {
+            images.forEach((img, i) => {
+                img.classList.toggle('opacity-100', i === currentIndex);
+                img.classList.toggle('opacity-0', i !== currentIndex);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('bg-emerald-500', i === currentIndex);
+                dot.classList.toggle('bg-white/50', i !== currentIndex);
+            });
+        }
+
+        // ─── Gallery Modal ────────────────────────────────────────────────────────────
+
+        function openStoreGallery(images, title) {
+            const modal = document.getElementById('galleryModal');
+            const titleEl = document.getElementById('galleryTitle');
+            const imagesContainer = document.getElementById('galleryImages');
+            titleEl.textContent = title;
+            imagesContainer.innerHTML = images.map((img, i) => `
+                <div class="relative group p-1">
+                    <img src="${img}" alt="${escapeHtml(title)} - ${i + 1}"
+                         class="w-full h-80 object-cover rounded-lg border border-white/10 hover:border-emerald-500/50 transition-all duration-300 cursor-pointer transform hover:scale-105"
+                         onclick="openLightbox('${img}')" />
+                    <div class="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">${i + 1}/${images.length}</div>
+                </div>
+            `).join('');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Backward-compat: openGallery uses old carouselId maps
+        function openGallery(carouselId) {
+            const product = productImages[carouselId] || vehicleImages[carouselId] || houseImages[carouselId]
+                         || mappingImages[carouselId] || accessoiresImages[carouselId] || characterImages[carouselId]
+                         || jobImages[carouselId];
+            if (!product) return;
+            openStoreGallery(product.images, product.name);
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ─── Section Switcher ─────────────────────────────────────────────────────────
+
+        function switchStoreSection(section) {
+            document.querySelectorAll('.store-section').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`section-${section}`);
+            if (target) target.classList.remove('hidden');
+            if (section === 'vehicles') loadVehicles();
+            if (section === 'houses') loadHouses();
+            if (section === 'mapping') loadMappings();
+            if (section === 'accessoires') loadAccessoires();
+            if (section === 'createJob') loadJobs();
+            if (section === 'create2Caractere') loadCharacters();
+
+
+            // Update active state on sidebar items
+            document.querySelectorAll('.sidebar-item[data-key]').forEach(item => {
+                item.classList.remove('active');
+            });
+            const activeItem = document.querySelector(`.sidebar-item[data-key="${section}"]`);
+            if (activeItem) activeItem.classList.add('active');
+        }
+
+        // ─── Order Dropdown ───────────────────────────────────────────────────────────
+
+        function toggleOrderDropdown() {
+            const dropdown = document.getElementById('orderDropdown');
+            const arrow = document.getElementById('orderDropdownArrow');
+            const orderBtn = arrow.closest('.sidebar-item');
+            const isOpening = dropdown.classList.contains('hidden');
+
+            if (isOpening) {
+                dropdown.classList.remove('hidden');
+                dropdown.style.overflow = 'hidden';
+                dropdown.style.maxHeight = '0px';
+                dropdown.style.opacity = '0';
+                dropdown.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+                        dropdown.style.opacity = '1';
+                    });
+                });
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                dropdown.style.maxHeight = '0px';
+                dropdown.style.opacity = '0';
+                setTimeout(() => dropdown.classList.add('hidden'), 300);
+                arrow.style.transform = '';
+            }
+
+            if (orderBtn) orderBtn.classList.toggle('active', isOpening);
+        }
+
+        // ─── Cart Functions ───────────────────────────────────────────────────────────
+
+        function addToCart(name, price, type) {
+            const exists = cart.some(item => item.name === name);
+            if (exists) {
+                openConfirmModal(translations[currentLanguage].itemAlreadyInCart || 'هذا العنصر موجودٌ بالفعل في السلة!', null, true);
+                return;
+            }
+            cart.push({ name, price, type });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartTotalEl = document.getElementById('cartTotal');
+            cartItemsEl.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = `<div class="text-center text-gray-500 py-4">${translations[currentLanguage].cartEmpty || 'السلة فارغة'}</div>`;
+                cartTotalEl.textContent = '$0';
+                const badge = document.getElementById('cartBadge');
+                if (badge) badge.classList.add('hidden');
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const iconMap = { vehicle: 'fa-car', house: 'fa-house', mapping: 'fa-map', accessoires: 'fa-gem', character: 'fa-user-plus', job: 'fa-briefcase' };
+                const colorMap = { vehicle: 'emerald', house: 'blue', mapping: 'orange', accessoires: 'purple', character: 'pink', job: 'pink' };
+                const icon = iconMap[item.type] || 'fa-box';
+                const color = colorMap[item.type] || 'red';
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors';
+                itemDiv.innerHTML = `
+                    <div class="flex items-center gap-2 min-w-0">
+                        <i class="fa-solid ${icon} text-${color}-400 text-sm shrink-0"></i>
+                        <span class="text-white text-sm font-medium truncate">${escapeHtml(item.name)}</span>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <span class="text-emerald-400 text-sm font-bold">$${item.price}</span>
+                        <button type="button" onclick="viewCartItemImages(${index})"
+                            class="w-9 h-9 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-black flex items-center justify-center text-sm cursor-pointer transition-colors" aria-label="عرض الصور">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button type="button" data-accept-index="${index}"
+                            class="cart-accept-btn w-9 h-9 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-black flex items-center justify-center text-sm cursor-pointer transition-colors ${!isAdmin() ? 'hidden' : ''}" aria-label="قبول الطلب" title="Accept">
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                        <button type="button" data-remove-index="${index}"
+                            class="cart-remove-btn w-9 h-9 rounded-lg bg-red-500/20 hover:bg-red-500 text-red-300 hover:text-white flex items-center justify-center text-lg font-bold cursor-pointer transition-colors" aria-label="حذف من السلة">×</button>
+                    </div>`;
+                cartItemsEl.appendChild(itemDiv);
+            });
+
+            cartTotalEl.textContent = `$${total}`;
+            const badge = document.getElementById('cartBadge');
+            if (badge) {
+                badge.textContent = cart.length;
+                badge.classList.remove('hidden');
+            }
+        }
+
+        function openCartModal() {
+            document.getElementById('cartOverlay').classList.remove('hidden');
+            document.getElementById('cartSidebar').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateCart();
+        }
+
+        function openCartSidebar() {
+            openCartModal();
+        }
+
+        function closeCartSidebar(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            document.getElementById('cartOverlay').classList.add('hidden');
+            document.getElementById('cartSidebar').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Supabase Configuration (dynamic load)
+        const SUPABASE_URL = localStorage.getItem('supabaseUrl') || 'https://hacwbsqerbobrovttzfk.supabase.co';
+        const SUPABASE_KEY = localStorage.getItem('supabaseKey') || 'sb_secret_zt5Mq8_NsFA05oP-T8Ni5w_ZVahpKY2';
+
+        async function initSupabase() {
+            if (window.supabase) {
+                return window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            }
+            // Load Supabase dynamically
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+            script.onload = () => {
+                console.log('Supabase loaded');
+            };
+            document.head.appendChild(script);
+            return null;
+        }
+
+        // Load My Tickets
+        function loadMyTickets() {
+            const orders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+            const ticketsList = document.getElementById('myTicketsList');
+            const session = JSON.parse(localStorage.getItem('discord_session')) || {};
+            const currentDiscordId = session.id;
+
+            // Filter orders for current user
+            const myOrders = currentDiscordId 
+                ? orders.filter(o => o.discord_id === currentDiscordId || o.discordId === currentDiscordId)
+                : orders;
+
+            if (myOrders.length === 0) {
+                ticketsList.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="fa-solid fa-ticket text-4xl mb-3 text-gray-600"></i>
+                        <p class="text-sm">${translations[currentLanguage].noTicketsYet || 'لا توجد تذاكر بعد'}</p>
+                    </div>`;
+                return;
+            }
+
+            ticketsList.innerHTML = '';
+            myOrders.forEach((order, idx) => {
+                const globalIdx = orders.findIndex(o => o.id === order.id);
+                const date = new Date(order.date || Date.now());
+                const dateStr = date.toLocaleDateString('ar-DZ', {
+                    year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+
+                const statusBadge = order.status === 'pending'
+                    ? '<span class="px-2 py-0.5 bg-amber-500/20 text-amber-400 text-xs font-bold rounded-full">⏳ Pending</span>'
+                    : order.status === 'cancelled'
+                    ? '<span class="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-bold rounded-full">❌ Cancelled</span>'
+                    : '<span class="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-full">✅ Completed</span>';
+
+                const itemsHtml = (order.items || []).map(item => {
+                    const typeEmoji = {
+                        vehicle: '🚗', house: '🏠', mapping: '🗺️',
+                        accessoires: '💎', character: '👤', job: '💼'
+                    }[item.type] || '📦';
+                    return `<div class="flex items-center gap-2 text-xs">
+                        <span>${typeEmoji}</span>
+                        <span class="text-white">${item.name}</span>
+                        <span class="text-emerald-400">$${item.price}</span>
+                    </div>`;
+                }).join('');
+
+                const ticketCard = document.createElement('div');
+                ticketCard.className = 'bg-white/5 border border-white/10 rounded-xl p-4 space-y-2';
+                ticketCard.innerHTML = `
+                    <div class="flex items-start justify-between gap-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="text-emerald-400 font-bold text-sm font-mono shrink-0">${order.id}</span>
+                            ${statusBadge}
+                        </div>
+                        <div class="flex items-center gap-1 shrink-0">
+                            ${order.status === 'pending' ? `
+                            <button onclick="acceptTicket('${order.id}')" class="px-3 py-1.5 bg-purple-500/20 hover:bg-purple-500 text-purple-300 hover:text-white text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center gap-1">
+                                <i class="fa-solid fa-check-double"></i>
+                                Accept
+                            </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 text-xs text-gray-400">
+                        <i class="fa-brands fa-discord text-indigo-400"></i>
+                        <span>${order.username || translations[currentLanguage].visitor || 'زائر'}</span>
+                        <span class="text-gray-500">•</span>
+                        <span>${dateStr}</span>
+                    </div>
+                    <div class="text-xs font-bold text-white">
+                        Total: $${order.total}
+                    </div>
+                    <div class="space-y-0.5 pt-1 border-t border-white/5">
+                        ${itemsHtml}
+                    </div>
+                `;
+                ticketsList.appendChild(ticketCard);
+            });
+        }
+
+        // Accept ticket - mark order as completed and send to Discord
+        function acceptTicket(orderId) {
+            const orders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+            const idx = orders.findIndex(o => o.id === orderId);
+            if (idx === -1) return;
+
+            const order = orders[idx];
+            if (order.status !== 'pending') return;
+
+            // Mark as completed
+            orders[idx].status = 'completed';
+            orders[idx].processed = true;
+            orders[idx].discordSent = true;
+            localStorage.setItem('storeOrders', JSON.stringify(orders));
+
+            // Update bot API
+            const BOT_API_URL = window.location.origin || 'http://localhost:3000';
+
+            fetch(BOT_API_URL + '/accept-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: order.id })
+            }).catch(err => console.error('❌ accept-order error:', err));
+
+            // Try to send to Discord ticket
+            fetch(BOT_API_URL + '/create-ticket', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: order.username,
+                    discordId: order.discord_id || order.discordId,
+                    items: order.items,
+                    total: order.total,
+                    status: 'completed',
+                    orderId: order.id
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                openConfirmModal('✅ ' + (translations[currentLanguage].ticketAccepted || 'تم قبول التذكرة بنجاح!') + ' ' + (translations[currentLanguage].ticketSentDiscord || 'تم إرسال التذكرة في ديسكورد وتأكيد الطلب.'), null, true);
+            })
+            .catch(() => {
+                openConfirmModal('✅ ' + (translations[currentLanguage].ticketAccepted || 'تم قبول التذكرة بنجاح!') + ' (' + (translations[currentLanguage].ticketSavedLocal || 'تم الحفظ محلياً كطلبٍ مكتمل') + ')', null, true);
+            });
+
+        }
+
+        function checkout() {
+            if (cart.length === 0) { alert(translations[currentLanguage].cartIsEmpty || 'السلة فارغة!'); return; }
+
+            // Get Discord session if logged in
+            const session = JSON.parse(localStorage.getItem('discord_session')) || {};
+            const username = session.global_name || session.username || 'زائر';
+            const discordId = session.id || null;
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+            // Show loading
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${translations[currentLanguage].sending || 'جارٍ الإرسال...'}`;
+            btn.disabled = true;
+
+            // 1. Create order
+            const order = {
+                id: 'ORD-' + Date.now().toString().slice(-6) + '-' + Math.random().toString(36).slice(2, 5).toUpperCase(),
+                username,
+                discord_id: discordId,
+                items: cart,
+                total,
+                status: 'pending',
+                processed: false,
+                date: new Date().toISOString()
+            };
+
+            // Save locally
+            const orders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+            orders.push(order);
+            localStorage.setItem('storeOrders', JSON.stringify(orders));
+
+            // 2. Send order to Bot API
+            const BOT_API_URL = window.location.origin || 'http://localhost:3000';
+
+            // Save order to bot memory
+            fetch(BOT_API_URL + '/create-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    orderId: order.id,
+                    username,
+                    discordId,
+                    items: cart,
+                    total
+                })
+            }).catch(err => console.error('❌ create-order error:', err));
+
+            // 3. Try to save to Supabase
+            initSupabase().then(supabase => {
+                if (supabase) {
+                    supabase
+                        .from('orders')
+                        .insert([order])
+                        .then(({ error }) => {
+                            if (error) {
+                                console.error('❌ Supabase error:', error);
+                            } else {
+                                console.log('✅ Order saved to Supabase:', order.id);
+                            }
+                        })
+                        .catch(err => {
+                            console.error('❌ Supabase error:', err);
+                        });
+                }
+            });
+
+            // 4. Create Discord ticket
+            fetch(BOT_API_URL + '/create-ticket', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    orderId: order.id,
+                    username,
+                    discordId,
+                    items: cart,
+                    total
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    order.discordSent = true;
+                    const savedOrders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+                    const idx = savedOrders.findIndex(o => o.id === order.id);
+                    if (idx !== -1) savedOrders[idx].discordSent = true;
+                    localStorage.setItem('storeOrders', JSON.stringify(savedOrders));
+                }
+                cart = [];
+                updateCart();
+                closeCartSidebar();
+                openConfirmModal('✅ ' + (translations[currentLanguage].orderSubmitted || 'تم تقديم طلبك بنجاح!') + ' ' + (translations[currentLanguage].orderId || 'معرف الطلب:') + ' ' + order.id + '\n' + (translations[currentLanguage].teamWillContact || 'سيتواصل معك الفريق قريباً.'), null, true);
+            })
+            .catch(() => {
+                cart = [];
+                updateCart();
+                closeCartSidebar();
+                openConfirmModal('✅ ' + (translations[currentLanguage].orderSubmitted || 'تم تقديم طلبك بنجاح!') + ' ' + (translations[currentLanguage].orderId || 'معرف الطلب:') + ' ' + order.id + '\n(' + (translations[currentLanguage].orderSavedLocally || 'تم الحفظ وسيتم مراجعته من الإدارة') + ')', null, true);
+            })
+            .finally(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        function viewCartItemImages(index) {
+            const item = cart[index];
+            if (!item) return;
+            closeCartSidebar();
+
+            const storageKeyMap = { vehicle: 'storeVehicles', house: 'storeHouses', mapping: 'storeMappings', accessoires: 'storeAccessoires', character: 'storeCharacters', job: 'storeJobs' };
+            const storageKey = storageKeyMap[item.type] || 'storeProducts';
+            const items = JSON.parse(localStorage.getItem(storageKey)) || [];
+            const found = items.find(i => (i.name || i.username) === item.name);
+            if (!found || !found.images || found.images.length === 0) return;
+
+            openStoreGallery(found.images, item.name);
+        }
+
+        // ─── Confirm Modal ────────────────────────────────────────────────────────────
+
+        let pendingAction = null;
+
+        function openConfirmModal(message, action, showOkButton = false) {
+            document.getElementById('confirmMessage').textContent = message;
+            pendingAction = action;
+            const buttonsContainer = document.querySelector('#confirmModal .flex.gap-3');
+            const okButtonContainer = document.getElementById('confirmOkButton');
+            if (showOkButton) {
+                buttonsContainer.classList.add('hidden');
+                okButtonContainer.classList.remove('hidden');
+            } else if (action) {
+                buttonsContainer.classList.remove('hidden');
+                okButtonContainer.classList.add('hidden');
+            } else {
+                buttonsContainer.classList.add('hidden');
+                okButtonContainer.classList.remove('hidden');
+            }
+            document.getElementById('confirmModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+            document.body.style.overflow = '';
+            pendingAction = null;
+        }
+
+        function confirmAction() {
+            if (pendingAction) pendingAction();
+            closeConfirmModal();
+        }
+
+        function closeAllItemsModal() {
+            document.getElementById('allItemsModal').classList.add('hidden');
+        }
+
+        // ─── Lightbox ─────────────────────────────────────────────────────────────────
+
+        function openLightbox(imageSrc) {
+            const modal = document.getElementById('lightboxModal');
+            const image = document.getElementById('lightboxImage');
+            image.src = imageSrc;
+            currentZoom = 1.5;
+            translateX = 0;
+            translateY = 0;
+            updateImageTransform();
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function zoomImage(delta) {
+            currentZoom = Math.max(0.5, Math.min(3, currentZoom + delta));
+            updateImageTransform();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+            updateImageTransform();
+        }
+
+        function updateImageTransform() {
+            const wrapper = document.getElementById('lightboxWrapper');
+            wrapper.style.transform = `scale(${currentZoom}) translate(${translateX}px, ${translateY}px)`;
+        }
+
+        function startDrag(e) {
+            if (currentZoom <= 1) return;
+            isDragging = true;
+            dragStartX = e.clientX - translateX;
+            dragStartY = e.clientY - translateY;
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            translateX = e.clientX - dragStartX;
+            translateY = e.clientY - dragStartY;
+            updateImageTransform();
+        }
+
+        function endDrag() {
+            isDragging = false;
+        }
+
+        // ─── Language ─────────────────────────────────────────────────────────────────
+
+        function toggleLanguageDropdown() {
+            document.getElementById('langDropdown').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('langDropdown');
+            const button = document.getElementById('langDropdownBtn');
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('siteLanguage', lang);
+            const currentFlag = document.getElementById('currentFlag');
+            const dir = lang === 'ar' ? 'rtl' : 'ltr';
+            if (lang === 'ar') {
+                currentFlag.src = './images/image90.jpg';
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                currentFlag.src = './images/image91.png';
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            }
+            // Update dir on all grid containers
+            document.querySelectorAll('.store-section [id$="Grid"], #myTicketsList').forEach(el => {
+                el.dir = dir;
+            });
+            setHeaderSwap(lang === 'ar');
+            updateTranslations();
+        }
+
+        function setHeaderSwap(isArabic) {
+            const serverNameContainer = document.getElementById('serverNameContainer');
+            const navContainer = document.getElementById('navContainer');
+            const headerRight = document.getElementById('headerRight');
+            if (!serverNameContainer || !navContainer || !headerRight) return;
+            serverNameContainer.style.order = '0';
+            navContainer.style.order = '1';
+            headerRight.style.order = '2';
+        }
+
+        function updateTranslations() {
+            const t = translations[currentLanguage];
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if (t[key] !== undefined) el.textContent = t[key];
+            });
+
+            // Update server brand name
+            const brandTitle = document.getElementById('brandTitle');
+            if (brandTitle) {
+                brandTitle.textContent = "WELAD L'HLAL";
+            }
+
+            const langDropdown = document.getElementById('langDropdown');
+            if (langDropdown) {
+                if (currentLanguage === 'ar') {
+                    langDropdown.classList.remove('right-0');
+                    langDropdown.classList.add('left-0');
+                } else {
+                    langDropdown.classList.remove('left-0');
+                    langDropdown.classList.add('right-0');
+                }
+            }
+
+            setHeaderSwap(currentLanguage === 'ar');
+        }
+
+        function initializeLanguage() {
+            const savedLang = localStorage.getItem('siteLanguage') || 'ar';
+            setLanguage(savedLang);
+        }
+
+        // ─── Event Listeners ──────────────────────────────────────────────────────────
+
+        document.getElementById('cartCloseBtn').addEventListener('click', closeCartSidebar);
+
+        document.getElementById('cartOverlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeCartSidebar(e);
+        });
+
+        document.getElementById('cartSidebar').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        document.getElementById('cartItems').addEventListener('click', (e) => {
+            // Accept button (admin only)
+            const acceptBtn = e.target.closest('.cart-accept-btn');
+            if (acceptBtn) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (!isAdmin()) {
+                    openConfirmModal('❌ ' + (translations[currentLanguage].adminOnly || 'هذه العملية متاحة فقط للإدارة'), null, true);
+                    return;
+                }
+                const index = Number(acceptBtn.dataset.acceptIndex);
+                if (Number.isNaN(index) || index < 0 || index >= cart.length) return;
+                const item = cart[index];
+                openConfirmModal(
+                    (translations[currentLanguage].confirmAccept || 'هل تريد تأكيد قبول هذا الطلب؟') + '\n' + escapeHtml(item.name) + ' - $' + item.price,
+                    () => {
+                        acceptCartItem(index);
+                    }
+                );
+                return;
+            }
+            // Remove button
+            const btn = e.target.closest('.cart-remove-btn');
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const index = Number(btn.dataset.removeIndex);
+            if (Number.isNaN(index) || index < 0 || index >= cart.length) return;
+            cart.splice(index, 1);
+            updateCart();
+        });
+
+        // ─── Admin Check ────────────────────────────────────────────────────────────
+
+        function isAdmin() {
+            const session = JSON.parse(localStorage.getItem('discord_session')) || {};
+            const adminIds = JSON.parse(localStorage.getItem('adminIds')) || [];
+            // Check if user has admin role or is in admin list
+            return session.isAdmin === true || adminIds.includes(session.id) || session.role === 'admin';
+        }
+
+        // ─── Accept Cart Item ────────────────────────────────────────────────────────
+
+        function acceptCartItem(index) {
+            const item = cart[index];
+            if (!item) return;
+
+            const BOT_API_URL = window.location.origin || 'http://localhost:3000';
+            const session = JSON.parse(localStorage.getItem('discord_session')) || {};
+            const username = session.global_name || session.username || 'Admin';
+
+            // Create completed order
+            const orderId = 'ORD-' + Date.now().toString().slice(-6) + '-' + Math.random().toString(36).slice(2, 5).toUpperCase();
+            const order = {
+                id: orderId,
+                username: username,
+                discord_id: session.id || null,
+                items: [item],
+                total: item.price,
+                status: 'completed',
+                processed: true,
+                discordSent: false,
+                date: new Date().toISOString()
+            };
+
+            // Save locally
+            const orders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+            orders.push(order);
+            localStorage.setItem('storeOrders', JSON.stringify(orders));
+
+            // Send to bot API - accept order
+            fetch(BOT_API_URL + '/accept-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: order.id, username, discordId: session.id, items: [item], total: item.price })
+            }).catch(err => console.error('❌ accept-order error:', err));
+
+            // Send to Discord ticket
+            fetch(BOT_API_URL + '/create-ticket', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username,
+                    discordId: session.id,
+                    items: [item],
+                    total: item.price,
+                    status: 'completed',
+                    orderId: order.id
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Mark as sent on Discord
+                const savedOrders = JSON.parse(localStorage.getItem('storeOrders')) || [];
+                const idx = savedOrders.findIndex(o => o.id === order.id);
+                if (idx !== -1) {
+                    savedOrders[idx].discordSent = true;
+                    localStorage.setItem('storeOrders', JSON.stringify(savedOrders));
+                }
+                openConfirmModal('✅ ' + (translations[currentLanguage].ticketAccepted || 'تم قبول التذكرة بنجاح!') + ' ' + (translations[currentLanguage].ticketSentDiscord || 'تم إرسال التذكرة في ديسكورد وتأكيد الطلب.'), null, true);
+            })
+            .catch(() => {
+                openConfirmModal('✅ ' + (translations[currentLanguage].ticketAccepted || 'تم قبول التذكرة بنجاح!') + ' (' + (translations[currentLanguage].ticketSavedLocal || 'تم الحفظ محلياً كطلبٍ مكتمل') + ')', null, true);
+            });
+
+            // Remove from cart
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !document.getElementById('cartSidebar').classList.contains('hidden')) {
+                closeCartSidebar();
+            }
+        });
+
+        // ─── Init ─────────────────────────────────────────────────────────────────────
+
+        window.addEventListener('load', () => {
+            initializeLanguage();
+            loadVehicles();
+            loadHouses();
+            loadMappings();
+            loadAccessoires();
+            loadCharacters();
+            loadJobs();
+        });
+
+        // ─── Admin Login Modal ──────────────────────────────────────────────
+        function openAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('adminLoginError').classList.add('hidden');
+        }
+
+        function submitAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value.trim();
+            const pass = document.getElementById('adminPass').value;
+            if (user === 'youcefdark' && pass === 'media123') {
+                sessionStorage.setItem('admin_auth', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                document.getElementById('adminLoginError').classList.remove('hidden');
+                document.getElementById('adminPass').value = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeAdminLogin();
+        });
+    </script>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeAdminLogin()"></div>
+        <div class="relative z-10 w-full max-w-md mx-4">
+            <button onclick="closeAdminLogin()" class="mb-4 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-all cursor-pointer text-sm backdrop-blur-sm">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back</span>
+            </button>
+            <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-500/20 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-red-400 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-white mb-1">Admin Panel</h2>
+                    <p class="text-gray-500 text-sm">أدخل بيانات الدخول للوصول إلى لوحة التحكم</p>
+                </div>
+                <form onsubmit="submitAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5">
+                            <i class="fa-solid fa-user text-red-400 mr-1"></i> Username
+                        </label>
+                        <input id="adminUser" type="text" required autocomplete="off"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-500 transition-colors text-sm"
+                            placeholder="Enter username" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5">
+                            <i class="fa-solid fa-lock text-red-400 mr-1"></i> Password
+                        </label>
+                        <input id="adminPass" type="password" required autocomplete="off"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-500 transition-colors text-sm"
+                            placeholder="Enter password" />
+                    </div>
+                    <div id="adminLoginError" class="hidden text-red-400 text-sm text-center font-bold">
+                        <i class="fa-solid fa-circle-exclamation mr-1"></i> اسم المستخدم أو كلمة المرور غير صحيحة
+                    </div>
+                    <button type="submit"
+                        class="w-full py-3 bg-red-500 hover:bg-red-400 text-white font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer text-sm shadow-lg shadow-red-500/20">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

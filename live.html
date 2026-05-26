@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELAD L'HLAL | Live</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Outfit', 'Cairo', sans-serif; background-color: #050d0a; }
+        html[lang="ar"] body { font-family: 'AR Baghdad', 'Cairo', sans-serif; }
+        a { text-decoration: none; }
+        a:hover { text-decoration: none; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 3px; }
+        @keyframes cartMove { 0%,100% { transform: translateX(8px); } 50% { transform: translateX(-8px); } }
+        .animate-cart { animation: cartMove 1s ease-in-out infinite; }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden flex flex-col justify-between select-none relative">
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="./images/video 2.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030705]/50 via-[#050f0a]/35 to-[#020604]/50"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.03)_0%,rgba(0,0,0,0.3)_80%)]"></div>
+    </div>
+
+    <header class="w-full z-40 relative px-4 sm:px-8 py-4">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-4 transition-all duration-300">
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0" id="serverNameContainer">
+                <a id="brandLink" href="index.html" class="flex items-center gap-2 group cursor-pointer">
+                    <img src="./images/image 1.png" alt="Server Logo" class="h-8 sm:h-10 rounded-lg" />
+                    <div class="w-2 h-6 bg-emerald-500 rounded-full shadow-[0_0_12px_#10b981] group-hover:scale-110 transition-transform"></div>
+                    <div class="flex flex-col leading-none">
+                        <h1 class="text-xl sm:text-2xl font-black tracking-wider">
+                            <span id="brandTitle" class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-white to-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.35)]">WELAD L'HLAL</span>
+                        </h1>
+                        <div class="text-emerald-400 font-bold text-[9px] sm:text-[10px] tracking-[0.45em] uppercase mt-1">Studio</div>
+                    </div>
+                </a>
+            </div>
+
+            <div id="navContainer" class="flex-1 flex justify-center min-w-0">
+                <nav class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <a href="index.html" class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="mainMenu">Home</span></a>
+                    <a href="#" onclick="openAdminLogin(); return false;" class="font-bold text-white hover:text-red-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="admin">Admin</span></a>
+                    <a href="roster.html" class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="roster">Roster</span></a>
+                    <a href="team.html" class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="team">Team</span></a>
+                    <a href="live.html" class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="live">Live</span></a>
+                    <a href="faq.html" class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base"><span data-translate="faq">FAQ</span></a>
+                </nav>
+            </div>
+
+            <div id="headerRight" class="flex items-center gap-3 relative shrink-0">
+                <a href="store.html"
+                        class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-black font-bold rounded-xl transition-all duration-200 cursor-pointer text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping animate-bounce motion-reduce:animate-none"></i>
+                    <span data-translate="store">Store</span>
+                </a>
+                <!-- Sign Up / Profile -->
+                <div id="authArea">
+                    <button id="signUpBtn" onclick="window.location.href='signup.html'"
+                            class="w-10 h-10 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center transition-colors cursor-pointer">
+                        <i class="fa-solid fa-user text-emerald-400"></i>
+                    </button>
+                    <div id="profileArea" class="hidden relative">
+                        <button onclick="toggleProfileDropdown()" class="w-10 h-10 rounded-lg bg-transparent hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer text-lg opacity-50 hover:opacity-100">
+                            👤
+                        </button>
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-56 bg-gray-900/95 backdrop-blur-xl rounded-xl shadow-xl border border-white/10 py-2 z-50">
+                            <div class="px-4 py-3 flex items-center gap-3 border-b border-white/10">
+                                <img id="dropdownAvatar" src="" alt="avatar" class="w-10 h-10 rounded-full object-cover" />
+                                <div class="min-w-0">
+                                    <p class="text-white font-bold text-sm truncate" id="dropdownName"></p>
+                                    <p class="text-gray-400 text-xs truncate" id="dropdownUsername"></p>
+                                </div>
+                            </div>
+                            <button onclick="logout()" class="w-full flex items-center gap-2 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span data-translate="logout">Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="langSwitcherContainer" class="relative">
+                    <button onclick="toggleLanguageDropdown()" id="langDropdownBtn" class="w-10 h-10 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center transition-colors focus:outline-none">
+                        <img id="currentFlag" src="./images/image90.jpg" alt="Flag" class="w-6 h-6 object-cover rounded-full" />
+                    </button>
+                    <div id="langDropdown" class="hidden absolute right-0 top-12 w-48 bg-gray-800 rounded-lg shadow-lg py-2 z-50">
+                        <p class="text-white text-sm px-4 py-2">اختر اللغة</p>
+                        <a href="#" onclick="setLanguage('ar'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image90.jpg" alt="Algeria" class="w-6 h-6 object-cover rounded-full" /> العربية
+                        </a>
+                        <a href="#" onclick="setLanguage('en'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image91.png" alt="USA" class="w-6 h-6 object-cover rounded-full" /> English
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full max-w-5xl mx-auto px-4 z-30 flex-grow flex flex-col justify-center my-10">
+        <div class="bg-black/40 rounded-3xl p-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-black" data-translate="pageTitle">Live</h2>
+            <p class="mt-3 text-white/70 text-sm sm:text-base" data-translate="pageSubtitle">Coming soon</p>
+        </div>
+    </main>
+
+    <footer class="w-full z-30 py-4 text-center text-xs text-white/30 backdrop-blur-xs">
+        <p>© 2026 WELAD L'HLAL Roleplay Server. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // ─── Discord Session ──────────────────────────────────────────────────
+        function loadSession() {
+            const session = JSON.parse(localStorage.getItem('discord_session'));
+            if (session && session.username) {
+                document.getElementById('signUpBtn').classList.add('hidden');
+                document.getElementById('profileArea').classList.remove('hidden');
+                document.getElementById('profileAvatar').src = session.avatar;
+                document.getElementById('dropdownAvatar').src = session.avatar;
+                document.getElementById('dropdownName').textContent = session.global_name || session.username;
+                document.getElementById('dropdownUsername').textContent = '@' + session.username;
+            } else {
+                document.getElementById('signUpBtn').classList.remove('hidden');
+                document.getElementById('profileArea').classList.add('hidden');
+            }
+        }
+
+        function toggleProfileDropdown() {
+            document.getElementById('profileDropdown').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(e) {
+            const area = document.getElementById('profileArea');
+            if (area && !area.contains(e.target)) {
+                document.getElementById('profileDropdown').classList.add('hidden');
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('discord_session');
+            loadSession();
+            document.getElementById('profileDropdown').classList.add('hidden');
+        }
+
+        loadSession();
+
+        let currentLanguage = 'ar';
+
+        const translations = {
+            en: {
+                mainMenu: 'Home',
+                store: 'Store',
+                admin: 'Admin',
+                roster: 'Roster',
+                team: 'Team',
+                live: 'Live',
+                faq: 'FAQ',
+                signUp: 'Sign Up',
+                pageTitle: 'Live',
+                pageSubtitle: 'Coming soon'
+            },
+            ar: {
+                mainMenu: 'الرئيسية',
+                store: 'المتجر',
+                admin: 'الإدارة',
+                roster: 'صناع محتوى',
+                team: 'الفريق',
+                live: 'مباشر',
+                faq: 'الأسئلة',
+                signUp: 'تسجيل',
+                pageTitle: 'مباشر',
+                pageSubtitle: 'قريباً'
+            }
+        };
+
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('langDropdown');
+            const button = document.getElementById('langDropdownBtn');
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('siteLanguage', lang);
+
+            const currentFlag = document.getElementById('currentFlag');
+            if (lang === 'ar') {
+                currentFlag.src = './images/image90.jpg';
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                currentFlag.src = './images/image91.png';
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            }
+
+            setHeaderSwap(lang === 'ar');
+            updateTranslations();
+        }
+
+        function setHeaderSwap(isArabic) {
+            const serverNameContainer = document.getElementById('serverNameContainer');
+            const navContainer = document.getElementById('navContainer');
+            const headerRight = document.getElementById('headerRight');
+            if (!serverNameContainer || !navContainer || !headerRight) return;
+            serverNameContainer.style.order = '0';
+            navContainer.style.order = '1';
+            headerRight.style.order = '2';
+        }
+
+        function updateTranslations() {
+            const t = translations[currentLanguage];
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if (t[key]) el.textContent = t[key];
+            });
+
+            const brandTitle = document.getElementById('brandTitle');
+            if (brandTitle) brandTitle.textContent = "WELAD L'HLAL";
+
+            const langDropdown = document.getElementById('langDropdown');
+            if (langDropdown) {
+                if (currentLanguage === 'ar') {
+                    langDropdown.classList.remove('right-0');
+                    langDropdown.classList.add('left-0');
+                } else {
+                    langDropdown.classList.remove('left-0');
+                    langDropdown.classList.add('right-0');
+                }
+            }
+        }
+
+        function initializeLanguage() {
+            const savedLang = localStorage.getItem('siteLanguage') || 'ar';
+            setLanguage(savedLang);
+        }
+
+        window.addEventListener('load', () => {
+            initializeLanguage();
+        });
+        // ─── Admin Login Modal ──────────────────────────────────────────────
+        function openAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('adminLoginError').classList.add('hidden');
+        }
+
+        function submitAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value.trim();
+            const pass = document.getElementById('adminPass').value;
+            if (user === 'youcefdark' && pass === 'media123') {
+                sessionStorage.setItem('admin_auth', 'true');
+                window.location.href = 'admin.html';
+            } else {
+                document.getElementById('adminLoginError').classList.remove('hidden');
+                document.getElementById('adminPass').value = '';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeAdminLogin();
+        });
+    </script>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeAdminLogin()"></div>
+        <div class="relative z-10 w-full max-w-md mx-4">
+            <button onclick="closeAdminLogin()" class="mb-4 flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-all cursor-pointer text-sm backdrop-blur-sm">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back</span>
+            </button>
+            <div class="bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-500/20 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-red-400 text-2xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-black text-white mb-1">Admin Panel</h2>
+                    <p class="text-gray-500 text-sm">أدخل بيانات الدخول للوصول إلى لوحة التحكم</p>
+                </div>
+                <form onsubmit="submitAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5">
+                            <i class="fa-solid fa-user text-red-400 mr-1"></i> Username
+                        </label>
+                        <input id="adminUser" type="text" required autocomplete="off"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-500 transition-colors text-sm"
+                            placeholder="Enter username" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5">
+                            <i class="fa-solid fa-lock text-red-400 mr-1"></i> Password
+                        </label>
+                        <input id="adminPass" type="password" required autocomplete="off"
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 outline-none focus:border-red-500 transition-colors text-sm"
+                            placeholder="Enter password" />
+                    </div>
+                    <div id="adminLoginError" class="hidden text-red-400 text-sm text-center font-bold">
+                        <i class="fa-solid fa-circle-exclamation mr-1"></i> اسم المستخدم أو كلمة المرور غير صحيحة
+                    </div>
+                    <button type="submit"
+                        class="w-full py-3 bg-red-500 hover:bg-red-400 text-white font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer text-sm shadow-lg shadow-red-500/20">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

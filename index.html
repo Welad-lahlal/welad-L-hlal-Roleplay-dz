@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELAD L'HLAL | Roleplay Server</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', 'Cairo', sans-serif;
+            background-color: #050d0a;
+        }
+        html[lang="ar"] body {
+            font-family: 'AR Baghdad', 'Cairo', sans-serif;
+        }
+        /* Remove underline from all links */
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10B981;
+            border-radius: 3px;
+        }
+        /* Glowing text effects */
+        .glow-green {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
+        .glow-white {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(5, 15, 10, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .glass-panel-premium {
+            background: rgba(5, 15, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.8); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 3s infinite;
+        }
+        @keyframes cartMove {
+            0%, 100% { transform: translateX(8px); }
+            50% { transform: translateX(-8px); }
+        }
+        .animate-cart {
+            animation: cartMove 1s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden flex flex-col justify-between select-none relative">
+
+    <!-- Background Video with dynamic dark green overlay to ensure crisp white/green visual look -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="./images/video 2.mp4" type="video/mp4">
+        </video>
+        <!-- Dual Overlays for perfect readability while letting background show -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#030705]/50 via-[#050f0a]/35 to-[#020604]/50"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.03)_0%,rgba(0,0,0,0.3)_80%)]"></div>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="w-full z-40 relative px-4 sm:px-8 py-4">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-4 transition-all duration-300">
+            
+            <div class="flex items-center gap-6 sm:gap-10 shrink-0" id="serverNameContainer">
+                <a id="brandLink" href="#" onclick="showSection('home')" class="flex items-center gap-2 group cursor-pointer">
+                    <img src="./images/image 1.png" alt="Server Logo" class="h-8 sm:h-10 rounded-lg" />
+                    <div class="w-2 h-6 bg-emerald-500 rounded-full shadow-[0_0_12px_#10b981] group-hover:scale-110 transition-transform"></div>
+                    <div class="flex flex-col leading-none">
+                        <h1 class="text-xl sm:text-2xl font-black tracking-wider">
+                            <span id="brandTitle" class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-white to-emerald-400 drop-shadow-[0_0_14px_rgba(16,185,129,0.35)]">WELAD L'HLAL</span>
+                        </h1>
+                        <div class="text-emerald-400 font-bold text-[9px] sm:text-[10px] tracking-[0.45em] uppercase mt-1">Studio</div>
+                    </div>
+                </a>
+            </div>
+
+            <div id="navContainer" class="flex-1 flex justify-center min-w-0">
+                <nav class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <a href="index.html"
+                            class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="mainMenu">Home</span>
+                    </a>
+                    <a href="admin.html"
+                            class="font-bold text-white hover:text-red-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="admin">Admin</span>
+                    </a>
+                    <a href="roster.html"
+                            class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="roster">Roster</span>
+                    </a>
+                    <a href="team.html"
+                            class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="team">Team</span>
+                    </a>
+                    <a href="live.html"
+                            class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="live">Live</span>
+                    </a>
+                    <a href="faq.html"
+                            class="font-bold text-white hover:text-emerald-400 hover:underline decoration-white underline-offset-8 transition-colors duration-200 cursor-pointer text-sm sm:text-base">
+                        <span data-translate="faq">FAQ</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Right side: Language + Profile -->
+            <div id="headerRight" class="flex items-center gap-3 relative shrink-0">
+
+                <a href="store.html"
+                        class="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-black font-bold rounded-xl transition-all duration-200 cursor-pointer text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping animate-bounce motion-reduce:animate-none"></i>
+                    <span data-translate="store">Store</span>
+                </a>
+
+                <!-- Sign Up / Profile -->
+                <div id="authArea">
+                    <!-- shown when logged out -->
+                    <button id="signUpBtn" onclick="window.location.href='signup.html'"
+                            class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl transition-all duration-300 flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer text-sm">
+                        <i class="fa-brands fa-discord"></i>
+                        <span data-translate="signUp">Sign Up</span>
+                    </button>
+
+                    <!-- shown when logged in -->
+                    <div id="profileArea" class="hidden relative">
+                        <button onclick="toggleProfileDropdown()" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                            <img id="profileAvatar" src="" alt="avatar" class="w-8 h-8 rounded-full object-cover" />
+                            <span id="profileName" class="text-white font-bold text-sm max-w-[100px] truncate"></span>
+                            <i class="fa-solid fa-chevron-down text-gray-400 text-xs"></i>
+                        </button>
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-gray-900 rounded-xl shadow-xl py-2 z-50">
+                            <div class="px-4 py-2">
+                                <p class="text-white font-bold text-sm truncate" id="dropdownName"></p>
+                                <p class="text-gray-400 text-xs">Discord Account</p>
+                            </div>
+                            <button onclick="logout()" class="w-full flex items-center gap-2 px-4 py-2.5 text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                <span data-translate="logout">Logout</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="langSwitcherContainer" class="relative">
+                    <button onclick="toggleLanguageDropdown()" id="langDropdownBtn" class="w-10 h-10 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 flex items-center justify-center transition-colors focus:outline-none">
+                        <img id="currentFlag" src="./images/image90.jpg" alt="Flag" class="w-6 h-6 object-cover rounded-full" />
+                    </button>
+                    <div id="langDropdown" class="hidden absolute right-0 top-12 w-48 bg-gray-800 rounded-lg shadow-lg py-2 z-50">
+                        <p class="text-white text-sm px-4 py-2">اختر اللغة</p>
+                        <a href="#" onclick="setLanguage('ar'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image90.jpg" alt="Algeria" class="w-6 h-6 object-cover rounded-full" /> العربية
+                        </a>
+                        <a href="#" onclick="setLanguage('en'); toggleLanguageDropdown(); return false;" class="flex items-center gap-2 px-4 py-2 text-white hover:bg-gray-700">
+                            <img src="./images/image91.png" alt="USA" class="w-6 h-6 object-cover rounded-full" /> English
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content View -->
+    <main class="w-full max-w-5xl mx-auto px-4 z-30 flex-grow flex flex-col justify-center my-6">
+        <!-- Home Section - Empty -->
+    </main>
+
+    <!-- Bottom spacing ensuring absolute background cleanliness without extra visual noise -->
+    <footer class="w-full z-30 py-4 text-center text-xs text-white/30 backdrop-blur-xs">
+        <p>© 2026 WELAD L'HLAL Roleplay Server. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeSignUpModal()"></div>
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+            <div class="glass-panel-premium rounded-3xl p-8 w-full max-w-md shadow-2xl animate-pulse-glow">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                            <i class="fa-solid fa-user-plus text-emerald-400 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-white" data-translate="signUpTitle">Join the Server</h3>
+                            <p class="text-xs text-gray-400" data-translate="signUpSubtitle">Fill in your info to register</p>
+                        </div>
+                    </div>
+                    <button onclick="closeSignUpModal()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-red-500 text-gray-300 hover:text-white flex items-center justify-center cursor-pointer transition-colors">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Form -->
+                <form onsubmit="submitSignUp(event)" class="space-y-4">
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5" data-translate="nameLabel">Full Name</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-emerald-400 text-sm"></i>
+                            <input id="signUpName" type="text" required
+                                class="w-full bg-white/5 rounded-xl px-4 py-3 pl-10 text-white placeholder-gray-500 outline-none transition-colors text-sm"
+                                data-placeholder="namePlaceholder" placeholder="أدخل اسمك الكامل" />
+                        </div>
+                    </div>
+
+                    <!-- Discord -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-1.5" data-translate="discordLabel">Discord Username</label>
+                        <div class="relative">
+                            <i class="fa-brands fa-discord absolute left-3 top-1/2 -translate-y-1/2 text-indigo-400 text-sm"></i>
+                            <input id="signUpDiscord" type="text" required
+                                class="w-full bg-white/5 rounded-xl px-4 py-3 pl-10 text-white placeholder-gray-500 outline-none transition-colors text-sm"
+                                data-placeholder="discordPlaceholder" placeholder="مثال: username#0000" />
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                        class="w-full py-3 mt-2 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer text-sm shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span data-translate="signUpBtn">Register Now</span>
+                    </button>
+                </form>
+
+                <!-- Success Message (hidden by default) -->
+                <div id="signUpSuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 text-center">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2"></i>
+                    <p class="text-emerald-400 font-bold" data-translate="signUpSuccess">Registration sent successfully!</p>
+                    <p class="text-gray-400 text-xs mt-1" data-translate="signUpSuccessNote">We will contact you via Discord soon.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript - Language Switching -->
+    <script>
+        let currentLanguage = 'ar';
+
+        const translations = {
+            en: {
+                mainMenu: 'Home',
+                store: 'Store',
+                admin: 'Admin',
+                roster: 'Roster',
+                team: 'Team',
+                live: 'Live',
+                faq: 'FAQ',
+                signUp: 'Sign Up',
+                logout: 'Logout',
+                signUpTitle: 'Join the Server',
+                signUpSubtitle: 'Fill in your info to register',
+                nameLabel: 'Full Name',
+                namePlaceholder: 'Enter your full name',
+                discordLabel: 'Discord Username',
+                discordPlaceholder: 'e.g. username#0000',
+                signUpBtn: 'Register Now',
+                signUpSuccess: 'Registration sent successfully!',
+                signUpSuccessNote: 'We will contact you via Discord soon.'
+            },
+            ar: {
+                mainMenu: 'الرئيسية',
+                store: 'المتجر',
+                admin: 'الإدارة',
+                roster: 'صناع محتوى',
+                team: 'الفريق',
+                live: 'مباشر',
+                faq: 'الأسئلة',
+                signUp: 'تسجيل',
+                logout: 'خروج',
+                signUpTitle: 'انضم للسيرفر',
+                signUpSubtitle: 'أدخل معلوماتك للتسجيل',
+                nameLabel: 'الاسم الكامل',
+                namePlaceholder: 'أدخل اسمك الكامل',
+                discordLabel: 'اسم المستخدم Discord',
+                discordPlaceholder: 'مثال: username#0000',
+                signUpBtn: 'سجل الآن',
+                signUpSuccess: 'تم إرسال التسجيل بنجاح!',
+                signUpSuccessNote: 'سنتواصل معك عبر Discord قريباً.'
+            }
+        };
+
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('langDropdown');
+            const button = document.getElementById('langDropdownBtn');
+            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('siteLanguage', lang);
+
+            const currentFlag = document.getElementById('currentFlag');
+            if (lang === 'ar') {
+                currentFlag.src = './images/image90.jpg';
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                currentFlag.src = './images/image91.png';
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'en';
+            }
+
+            setHeaderSwap(lang === 'ar');
+            updateTranslations();
+        }
+
+        function setHeaderSwap(isArabic) {
+            const serverNameContainer = document.getElementById('serverNameContainer');
+            const navContainer = document.getElementById('navContainer');
+            const headerRight = document.getElementById('headerRight');
+            if (!serverNameContainer || !navContainer || !headerRight) return;
+            serverNameContainer.style.order = '0';
+            navContainer.style.order = '1';
+            headerRight.style.order = '2';
+        }
+
+        function updateTranslations() {
+            const t = translations[currentLanguage];
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.dataset.translate;
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const key = el.dataset.placeholder;
+                if (t[key]) el.placeholder = t[key];
+            });
+
+            const brandTitle = document.getElementById('brandTitle');
+            if (brandTitle) {
+                brandTitle.textContent = "WELAD L'HLAL";
+            }
+
+            const langDropdown = document.getElementById('langDropdown');
+            if (langDropdown) {
+                if (currentLanguage === 'ar') {
+                    langDropdown.classList.remove('right-0');
+                    langDropdown.classList.add('left-0');
+                } else {
+                    langDropdown.classList.remove('left-0');
+                    langDropdown.classList.add('right-0');
+                }
+            }
+        }
+
+        function initializeLanguage() {
+            const savedLang = localStorage.getItem('siteLanguage') || 'ar';
+            setLanguage(savedLang);
+        }
+
+        // ─── Discord Session ──────────────────────────────────────────────────────────
+
+        function loadSession() {
+            const session = JSON.parse(localStorage.getItem('discord_session'));
+            if (session && session.username) {
+                // Show profile, hide sign up
+                document.getElementById('signUpBtn').classList.add('hidden');
+                document.getElementById('profileArea').classList.remove('hidden');
+                document.getElementById('profileAvatar').src = session.avatar;
+                document.getElementById('profileName').textContent = session.global_name || session.username;
+                document.getElementById('dropdownName').textContent = session.global_name || session.username;
+            } else {
+                document.getElementById('signUpBtn').classList.remove('hidden');
+                document.getElementById('profileArea').classList.add('hidden');
+            }
+        }
+
+        function toggleProfileDropdown() {
+            document.getElementById('profileDropdown').classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(e) {
+            const area = document.getElementById('profileArea');
+            if (area && !area.contains(e.target)) {
+                document.getElementById('profileDropdown').classList.add('hidden');
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('discord_session');
+            loadSession();
+            document.getElementById('profileDropdown').classList.add('hidden');
+        }
+
+        // ─── Sign Up Modal ────────────────────────────────────────────────────────────
+
+        function openSignUpModal() {
+            document.getElementById('signUpModal').classList.remove('hidden');
+            document.getElementById('signUpSuccess').classList.add('hidden');
+            document.getElementById('signUpName').value = '';
+            document.getElementById('signUpDiscord').value = '';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSignUpModal() {
+            document.getElementById('signUpModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function submitSignUp(e) {
+            e.preventDefault();
+            const name = document.getElementById('signUpName').value.trim();
+            const discord = document.getElementById('signUpDiscord').value.trim();
+            if (!name || !discord) return;
+            const registrations = JSON.parse(localStorage.getItem('signUpRegistrations')) || [];
+            registrations.push({ name, discord, date: new Date().toISOString() });
+            localStorage.setItem('signUpRegistrations', JSON.stringify(registrations));
+            document.getElementById('signUpSuccess').classList.remove('hidden');
+            document.getElementById('signUpName').value = '';
+            document.getElementById('signUpDiscord').value = '';
+            setTimeout(() => closeSignUpModal(), 2500);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSignUpModal();
+        });
+
+        window.addEventListener('load', () => {
+            initializeLanguage();
+            loadSession();
+            // Redirect to signup if not registered yet
+            const session = JSON.parse(localStorage.getItem('discord_session'));
+            const isRegistered = localStorage.getItem('isRegistered') === 'true';
+            if (!session || !session.id || !isRegistered) {
+                window.location.href = "signup.html";
+            }
+        });
+    </script>
+</body>
+</html>
